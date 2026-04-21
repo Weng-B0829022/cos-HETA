@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>HETA (Hierarchical Edge Type Analysis)</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pygment_trac.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typicons.font@2.0.9/src/font/typicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/brands.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/solid.min.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>HETA</h1>
+        <p><h2 class="title"> An algorithm for evaluating the strength of edges. </h2></p>
+        
+        <p class="view"><a href="https://github.com/wcchin/HETA">go to project page <small>Benny/HETA</small></a></p>
+        
+      </header>
+      <section>
+		  
+		<h1 id="heta">HETA</h1>
+
+<h1 id="intro">Intro</h1>
+
+<p>Hierarchical Edge Type Analysis. An algorithm for detecting edge types using common neighbor concept.</p>
+<p>This is a rewritten of: <a href="https://github.com/canslab1/Identification-Algorithm/">https://github.com/canslab1/Identification-Algorithm/</a> , into convenient function that take NetworkX Graph objects, and to be compatible with Python3.  </p>
+<h2 id="install">Install</h2>
+
+<pre><code>git clone https://github.com/wcchin/HETA.git
+cd HETA
+pip install .
+# or 
+# pip install -e .
+</code></pre>
+<h2 id="usage">Usage</h2>
+
+<p>Please check the test.py script.</p>
+<p>In simple:</p>
+<pre><code>### import necessary packages and heta package
+import networkx as nx
+import heta
+
+### read file as nx.Graph() object
+fp = 'data/net/14p.net'
+g = nx.Graph(nx.read_pajek(fp))
+
+### run algorithm using default parameter
+g, ext_dic, int_dic = heta.bridge_or_bond(g)
+
+### get all edge types
+for u, v, d in g.edges(data=True):
+    print(u, v, d['type'])
+
+### draw the results
+import matplotlib.pyplot as plt
+heta.draw_result(g, layout='spring')
+plt.show()
+
+### external and internal threshold
+print(ext_dic, int_dic)
+
+### fingerprint analysis
+### proportion of ['bond', 'local', 'global', 'silk']
+print(heta.fingerprint(g))
+</code></pre>
+<h1 id="articlereference">Article reference</h1>
+
+<h2 id="beyondbondlinksincomplexnetworks:localbridges,globalbridgesandsilklinks">Beyond Bond Links in Complex Networks: Local Bridges, Global Bridges and Silk Links</h2>
+
+<h2 id="highlights">Highlights</h2>
+
+<ul>
+<li>An identification algorithm for determining hierarchical link types is described.</li>
+<li>Multi-hierarchy level link types are identified using the common neighbor concept.</li>
+<li>Two applications are demonstrated: fingerprint analysis and network partitioning.</li>
+<li>Fingerprint analysis is used to compare topological structures among networks.</li>
+<li>Hierarchical link structures are used to partition networks into communities.</li>
+</ul>
+<h2 id="abstract">Abstract</h2>
+
+<p>Many network researchers use intuitive or basic definitions when discussing the importance of strong and <a href="https://www.sciencedirect.com/topics/physics-and-astronomy/weak-link">weak links</a> and their roles. Others use an approach best described as “if not strong, then weak” to determine the strengths and weaknesses of individual links, thus deemphasizing hierarchical network structures that allow links to express different strength levels. Here we describe our proposal for a hierarchical edge type analysis (HETA) algorithm for determining link types at multiple network hierarchy levels based on the common neighbor concept plus statistical factors such as bond links, <em>k</em>th-layer local bridges, global bridges, and silk links—all generated during long-term network development and evolution processes. Two sets of networks were used to validate our proposed algorithm, one consisting of 16 networks employed in multiple past studies, and one consisting of two types of one-dimensional small-world networks expressing different random rewiring or shortcut addition probabilities. Two applications with potential for developmental contributions are demonstrated: a network fingerprint analysis framework, and a hierarchical network community <a href="https://www.sciencedirect.com/topics/mathematics/partition-method">partition method</a>.</p>
+<p>Keywords: Network topology, Hierarchy of links, Common neighbor concept, Fingerprint analysis, Hierarchical community partition, Edge type analysis</p>
+<p>article url: <a href="https://www.sciencedirect.com/science/article/pii/S0378437119306375">https://www.sciencedirect.com/science/article/pii/S0378437119306375</a></p>
+<p>cite this as:<br />
+Huang C. Y., Chin, W. C. B., Fu, Y. H., &amp; Tsai, Y. S. (in press) Beyond bond links in complex networks: Local bridges, global bridges and silk links. Physica A: Statistical Mechanics and its Applications. 
+DOI: <a href="https://doi.org/10.1016/j.physa.2019.04.263">https://doi.org/10.1016/j.physa.2019.04.263</a> .</p>
+		  
+      </section>
+      <footer>
+        <p> Benny is working with a lot of passion on <a href="https://github.com/wcchin/HETA">HETA</a>.</p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="js/scale.fix.js"></script>
+  </body>
+</html>
