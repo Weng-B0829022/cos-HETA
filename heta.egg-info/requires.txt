@@ -1,6 +1,0 @@
-networkx
-numpy
-scipy
-matplotlib
-tqdm
-pathos
