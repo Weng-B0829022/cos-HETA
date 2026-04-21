@@ -39,12 +39,13 @@ HETA 論文（Huang, Chin, Fu, Tsai, 2019, Physica A 536, 121027）
 
 輸出位置
 --------
-每個實驗的 .py 與輸出（PNG / CSV）皆放在自己的子資料夾：
-    HETA/exp4_smallworld_r1_boxplot/fig4.png
-    HETA/exp5_real16_r1_boxplot/fig5.png
+每個實驗的 .py 與輸出（PNG / CSV）皆放在自己的子資料夾，
+所有 exp* 與 table* 資料夾統一收納於 HETA/experiment/ 之下：
+    HETA/experiment/exp4_smallworld_r1_boxplot/fig4.png
+    HETA/experiment/exp5_real16_r1_boxplot/fig5.png
     ...
-    HETA/table2_partition_metrics/table2.csv
-共享快取（exp10 重用 exp8、exp11 重用 exp9）：
+    HETA/experiment/table2_partition_metrics/table2.csv
+共享快取（exp10 重用 exp8、exp11 重用 exp9）仍位於 HETA 根目錄：
     HETA/_cache/
 
 手動開關
@@ -58,8 +59,11 @@ import os
 import subprocess
 import sys
 import time
+from datetime import datetime
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+# 所有 exp* / table* 資料夾統一收納於 HETA/experiment/ 之下
+EXP_DIR = "experiment"
 
 # ────────────────────────────────────────────────────────────────────
 #  實驗清單（key, 子資料夾名, 腳本檔名, 中文說明, 預設啟用, 預估耗時）
@@ -164,7 +168,8 @@ def _apply_filters(only, skip):
 
 def _run_one(key, folder, script, desc, times):
     """以 subprocess 執行單一實驗，於該實驗的子資料夾內運作"""
-    folder_path = os.path.join(ROOT, folder)
+    # 所有實驗資料夾已搬至 HETA/experiment/ 之下
+    folder_path = os.path.join(ROOT, EXP_DIR, folder)
     script_path = os.path.join(folder_path, script)
     if not os.path.exists(script_path):
         print(f"❌ 找不到腳本：{script_path}")
@@ -200,6 +205,74 @@ def _run_one(key, folder, script, desc, times):
     status = "✅ 成功" if ok else "❌ 失敗"
     print(f"\n   {status}（耗時 {elapsed:.1f} 秒）")
     return ok, elapsed
+
+
+def _write_run_log(start_dt, end_dt, grand_elapsed, args, summary):
+    """
+    將本次執行的參數與時間寫入 HETA/experiment/run_<timestamp>.txt
+    每次執行都會產生獨立的 log 檔，不覆蓋歷史。
+
+    參數：
+        start_dt       datetime 執行開始時間
+        end_dt         datetime 執行結束時間
+        grand_elapsed  float    總耗時（秒）
+        args           argparse.Namespace  CLI 參數
+        summary        list[(key, ok, elapsed)]  各實驗結果
+    """
+    exp_root = os.path.join(ROOT, EXP_DIR)
+    os.makedirs(exp_root, exist_ok=True)
+
+    ts = start_dt.strftime("%Y%m%d_%H%M%S")
+    log_path = os.path.join(exp_root, f"run_{ts}.txt")
+
+    lines = []
+    lines.append("=" * 72)
+    lines.append("  HETA 論文實驗自動化 — 本次執行參數與結果")
+    lines.append("=" * 72)
+    lines.append("")
+    lines.append(f"執行開始：{start_dt.strftime('%Y-%m-%d %H:%M:%S')}")
+    lines.append(f"執行結束：{end_dt.strftime('%Y-%m-%d %H:%M:%S')}")
+    lines.append(f"總耗時  ：{grand_elapsed:.1f} 秒（{grand_elapsed/60:.2f} 分）")
+    lines.append("")
+
+    lines.append("── 執行參數 " + "─" * 60)
+    lines.append(f"HETA_TIMES（每網路隨機化次數）：{args.times}")
+    lines.append(f"--only：{args.only if args.only else '（未指定，預設全跑）'}")
+    lines.append(f"--skip：{args.skip if args.skip else '（未指定）'}")
+    lines.append(f"Python ：{sys.executable}")
+    lines.append(f"HETA ROOT：{ROOT}")
+    lines.append(f"EXP_DIR  ：{os.path.join(ROOT, EXP_DIR)}")
+    lines.append("")
+
+    lines.append("── 實驗開關狀態 " + "─" * 56)
+    lines.append(f"  {'KEY':<8} {'STATUS':<8} {'TIME':<40} 說明")
+    lines.append("  " + "-" * 68)
+    for key, folder, script, desc, _, eta in EXPERIMENTS:
+        mark = "[ON]" if TOGGLE.get(key, False) else "[OFF]"
+        lines.append(f"  {key:<8} {mark:<8} {eta:<40} {desc}")
+    lines.append("")
+
+    lines.append("── 執行結果 " + "─" * 60)
+    lines.append(f"  {'KEY':<8} {'RESULT':<10} {'TIME (sec)':>12}")
+    lines.append("  " + "-" * 40)
+    for key, ok, elapsed in summary:
+        lines.append(
+            f"  {key:<8} {('✅ OK' if ok else '❌ FAIL'):<10} {elapsed:>12.1f}"
+        )
+    lines.append("")
+
+    n_ok = sum(1 for _, ok, _ in summary if ok)
+    n_total = len(summary)
+    lines.append("── 最終統計 " + "─" * 60)
+    lines.append(f"  通過：{n_ok}/{n_total}")
+    lines.append(f"  失敗：{n_total - n_ok}/{n_total}")
+    lines.append("=" * 72)
+    lines.append("")
+
+    with open(log_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+    return log_path
 
 
 # ────────────────────────────────────────────────────────────────────
@@ -239,11 +312,13 @@ def main():
     print(f"準備執行 {len(enabled)} 個實驗，HETA_TIMES = {args.times}\n")
 
     summary = []
+    start_dt = datetime.now()
     grand_t0 = time.time()
     for key, folder, script, desc in enabled:
         ok, elapsed = _run_one(key, folder, script, desc, args.times)
         summary.append((key, ok, elapsed))
     grand_elapsed = time.time() - grand_t0
+    end_dt = datetime.now()
 
     # 最終彙總
     print("\n" + "═" * 90)
@@ -258,6 +333,13 @@ def main():
     print(f"  通過：{n_ok}/{len(summary)}    總耗時：{grand_elapsed:.1f} 秒"
           f"（{grand_elapsed/60:.1f} 分）")
     print("═" * 90 + "\n")
+
+    # 將本次執行的參數與時間寫入 HETA/experiment/run_<timestamp>.txt
+    try:
+        log_path = _write_run_log(start_dt, end_dt, grand_elapsed, args, summary)
+        print(f"本次執行紀錄已寫入：{log_path}\n")
+    except Exception as e:
+        print(f"⚠  寫入執行紀錄失敗：{e}\n")
 
 
 if __name__ == "__main__":
