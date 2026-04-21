@@ -37,14 +37,31 @@ HETA 論文（Huang, Chin, Fu, Tsai, 2019, Physica A 536, 121027）
 降低隨機化次數做快速驗收（預設 1000，建議測試時用 50–100）：
     python3 auto.py --times 100
 
+專案結構
+--------
+    HETA/
+    ├── auto.py                                ← 本主控腳本
+    ├── heta/                                  ← 套件（pip install -e .）
+    ├── data/{net,pos}/                        ← 輸入資料
+    ├── _cache/                                ← 共用指紋快取
+    ├── src/                                   ← 各實驗原始程式碼
+    │   ├── exp4_smallworld_r1_boxplot/exp4_smallworld_r1_boxplot.py
+    │   ├── exp5_real16_r1_boxplot/exp5_real16_r1_boxplot.py
+    │   ├── ...
+    │   └── table2_partition_metrics/table2_partition_metrics.py
+    └── experiment/                            ← 各次執行結果
+        └── experiment_<YYYYMMDD_HHMMSS>/
+            ├── fig4.png ~ fig12.png
+            ├── table1.csv
+            ├── table2.csv, table2_summary.txt
+            └── run_info.txt                   ← 本次執行參數與結果
+
 輸出位置
 --------
-每個實驗的 .py 與輸出（PNG / CSV）皆放在自己的子資料夾，
-所有 exp* 與 table* 資料夾統一收納於 HETA/experiment/ 之下：
-    HETA/experiment/exp4_smallworld_r1_boxplot/fig4.png
-    HETA/experiment/exp5_real16_r1_boxplot/fig5.png
-    ...
-    HETA/experiment/table2_partition_metrics/table2.csv
+每次執行 auto.py 會建立單一結果資料夾：
+    HETA/experiment/experiment_<時間戳>/
+所有啟用實驗的 fig*.png / table*.csv 都寫入其中（不再各自分散）。
+執行參數與結果亦寫入同資料夾的 run_info.txt。
 共享快取（exp10 重用 exp8、exp11 重用 exp9）仍位於 HETA 根目錄：
     HETA/_cache/
 
@@ -62,7 +79,9 @@ import time
 from datetime import datetime
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-# 所有 exp* / table* 資料夾統一收納於 HETA/experiment/ 之下
+# 各實驗的原始程式碼資料夾統一收納於 HETA/src/ 之下
+SRC_DIR = "src"
+# 各次執行的結果（圖、表、run_info.txt）統一輸出到 HETA/experiment/experiment_<時間戳>/
 EXP_DIR = "experiment"
 
 # ────────────────────────────────────────────────────────────────────
@@ -166,10 +185,15 @@ def _apply_filters(only, skip):
                 print(f"⚠  --skip 指定了不存在的實驗 key：{s}")
 
 
-def _run_one(key, folder, script, desc, times):
-    """以 subprocess 執行單一實驗，於該實驗的子資料夾內運作"""
-    # 所有實驗資料夾已搬至 HETA/experiment/ 之下
-    folder_path = os.path.join(ROOT, EXP_DIR, folder)
+def _run_one(key, folder, script, desc, times, output_dir):
+    """以 subprocess 執行單一實驗。
+
+    程式碼位於 HETA/src/<folder>/；輸出統一寫到 output_dir（由 main() 一次
+    決定並共用給所有實驗）。輸出目的地透過環境變數 HETA_OUTPUT_DIR 傳遞給
+    子腳本；子腳本內會 os.chdir(HETA_OUTPUT_DIR) 讓 plt.savefig / to_csv 落點
+    一致。
+    """
+    folder_path = os.path.join(ROOT, SRC_DIR, folder)
     script_path = os.path.join(folder_path, script)
     if not os.path.exists(script_path):
         print(f"❌ 找不到腳本：{script_path}")
@@ -177,13 +201,15 @@ def _run_one(key, folder, script, desc, times):
 
     print("\n" + "─" * 90)
     print(f"▶  [{key}] {desc}")
-    print(f"   工作目錄：{folder_path}")
-    print(f"   執行腳本：{script}")
+    print(f"   程式碼目錄：{folder_path}")
+    print(f"   輸出目錄  ：{output_dir}")
+    print(f"   執行腳本  ：{script}")
     print(f"   隨機化次數 HETA_TIMES = {times}")
     print("─" * 90)
 
     env = os.environ.copy()
     env["HETA_TIMES"] = str(times)
+    env["HETA_OUTPUT_DIR"] = output_dir
     # 確保子腳本能 import heta（讓 HETA/ 在 sys.path 上）
     py_path = env.get("PYTHONPATH", "")
     env["PYTHONPATH"] = ROOT + (os.pathsep + py_path if py_path else "")
@@ -207,23 +233,22 @@ def _run_one(key, folder, script, desc, times):
     return ok, elapsed
 
 
-def _write_run_log(start_dt, end_dt, grand_elapsed, args, summary):
+def _write_run_log(output_dir, start_dt, end_dt, grand_elapsed, args, summary):
     """
-    將本次執行的參數與時間寫入 HETA/experiment/run_<timestamp>.txt
-    每次執行都會產生獨立的 log 檔，不覆蓋歷史。
+    將本次執行的參數與時間寫入 <output_dir>/run_info.txt
+    （output_dir 為 HETA/experiment/experiment_<timestamp>/，由 main() 統一決定）
+    run_info.txt 與本次所有 fig*.png / table*.csv 放在同一資料夾，方便歸檔比對。
 
     參數：
+        output_dir     str      本次執行結果資料夾
         start_dt       datetime 執行開始時間
         end_dt         datetime 執行結束時間
         grand_elapsed  float    總耗時（秒）
         args           argparse.Namespace  CLI 參數
         summary        list[(key, ok, elapsed)]  各實驗結果
     """
-    exp_root = os.path.join(ROOT, EXP_DIR)
-    os.makedirs(exp_root, exist_ok=True)
-
-    ts = start_dt.strftime("%Y%m%d_%H%M%S")
-    log_path = os.path.join(exp_root, f"run_{ts}.txt")
+    os.makedirs(output_dir, exist_ok=True)
+    log_path = os.path.join(output_dir, "run_info.txt")
 
     lines = []
     lines.append("=" * 72)
@@ -241,7 +266,8 @@ def _write_run_log(start_dt, end_dt, grand_elapsed, args, summary):
     lines.append(f"--skip：{args.skip if args.skip else '（未指定）'}")
     lines.append(f"Python ：{sys.executable}")
     lines.append(f"HETA ROOT：{ROOT}")
-    lines.append(f"EXP_DIR  ：{os.path.join(ROOT, EXP_DIR)}")
+    lines.append(f"SRC_DIR  ：{os.path.join(ROOT, SRC_DIR)}")
+    lines.append(f"輸出目錄 ：{output_dir}")
     lines.append("")
 
     lines.append("── 實驗開關狀態 " + "─" * 56)
@@ -309,13 +335,19 @@ def main():
         print("⚠  沒有任何實驗被啟用，結束。")
         return
 
-    print(f"準備執行 {len(enabled)} 個實驗，HETA_TIMES = {args.times}\n")
+    # 建立本次執行的結果資料夾 HETA/experiment/experiment_<時間戳>/
+    start_dt = datetime.now()
+    run_ts = start_dt.strftime("%Y%m%d_%H%M%S")
+    run_output_dir = os.path.join(ROOT, EXP_DIR, f"experiment_{run_ts}")
+    os.makedirs(run_output_dir, exist_ok=True)
+
+    print(f"準備執行 {len(enabled)} 個實驗，HETA_TIMES = {args.times}")
+    print(f"本次結果輸出目錄：{run_output_dir}\n")
 
     summary = []
-    start_dt = datetime.now()
     grand_t0 = time.time()
     for key, folder, script, desc in enabled:
-        ok, elapsed = _run_one(key, folder, script, desc, args.times)
+        ok, elapsed = _run_one(key, folder, script, desc, args.times, run_output_dir)
         summary.append((key, ok, elapsed))
     grand_elapsed = time.time() - grand_t0
     end_dt = datetime.now()
@@ -334,10 +366,13 @@ def main():
           f"（{grand_elapsed/60:.1f} 分）")
     print("═" * 90 + "\n")
 
-    # 將本次執行的參數與時間寫入 HETA/experiment/run_<timestamp>.txt
+    # 將本次執行的參數與時間寫入 <run_output_dir>/run_info.txt
     try:
-        log_path = _write_run_log(start_dt, end_dt, grand_elapsed, args, summary)
-        print(f"本次執行紀錄已寫入：{log_path}\n")
+        log_path = _write_run_log(
+            run_output_dir, start_dt, end_dt, grand_elapsed, args, summary
+        )
+        print(f"本次執行紀錄已寫入：{log_path}")
+        print(f"本次所有圖表與紀錄：{run_output_dir}\n")
     except Exception as e:
         print(f"⚠  寫入執行紀錄失敗：{e}\n")
 
