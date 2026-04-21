@@ -2,18 +2,18 @@
   HETA 論文實驗自動化 — 本次執行參數與結果
 ========================================================================
 
-執行開始：2026-04-21 16:24:05
-執行結束：2026-04-21 16:24:47
-總耗時  ：42.7 秒（0.71 分）
+執行開始：2026-04-21 16:36:25
+執行結束：2026-04-21 16:49:07
+總耗時  ：762.3 秒（12.71 分）
 
 ── 執行參數 ────────────────────────────────────────────────────────────
-HETA_TIMES（每網路隨機化次數）：10
+HETA_TIMES（每網路隨機化次數）：200
 --only：（未指定，預設全跑）
 --skip：（未指定）
 Python ：/Users/TsaiShuFen/Downloads/HETA_replication_package/HETA/venv/bin/python3
 HETA ROOT：/Users/TsaiShuFen/Downloads/HETA_replication_package/HETA
 SRC_DIR  ：/Users/TsaiShuFen/Downloads/HETA_replication_package/HETA/src
-輸出目錄 ：/Users/TsaiShuFen/Downloads/HETA_replication_package/HETA/experiment/experiment_20260421_162405
+輸出目錄 ：/Users/TsaiShuFen/Downloads/HETA_replication_package/HETA/experiment/experiment_20260421_163625
 
 ── 實驗開關狀態 ────────────────────────────────────────────────────────
   KEY      STATUS   TIME                                     說明
@@ -33,17 +33,17 @@ SRC_DIR  ：/Users/TsaiShuFen/Downloads/HETA_replication_package/HETA/src
 ── 執行結果 ────────────────────────────────────────────────────────────
   KEY      RESULT       TIME (sec)
   ----------------------------------------
-  table1   ✅ OK                0.6
+  table1   ✅ OK                0.8
   fig4     ✅ OK                1.1
-  fig5     ✅ OK                0.7
-  fig6     ✅ OK                7.8
-  fig7     ✅ OK               13.9
-  fig8     ✅ OK                0.7
-  fig9     ✅ OK                0.5
-  fig10    ✅ OK                1.3
+  fig5     ✅ OK                0.6
+  fig6     ✅ OK              143.5
+  fig7     ✅ OK              292.5
+  fig8     ✅ OK                0.8
+  fig9     ✅ OK                0.6
+  fig10    ✅ OK                1.5
   fig11    ✅ OK                1.1
-  fig12    ✅ OK                1.4
-  table2   ✅ OK               13.6
+  fig12    ✅ OK               13.7
+  table2   ✅ OK              306.0
 
 ── 最終統計 ────────────────────────────────────────────────────────────
   通過：11/11

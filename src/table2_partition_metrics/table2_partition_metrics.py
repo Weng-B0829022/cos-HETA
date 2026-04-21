@@ -73,7 +73,26 @@ def first_layer_cn_ratio(G, u, v):
 
 
 def flatten_communities(communities):
-    """將 heta.community_sorting() 的回傳結構展平為 [set, set, ...]"""
+    """將 heta.community_sorting() 的回傳結構展平為 [set, set, ...]
+
+    heta.community_sorting(G) 官方回傳是 4-tuple：
+        (nodes_sorted, h_tree_dic, flat_cdic, kmax)
+    其中 flat_cdic = {leader_node: [member_node, ...]}，
+    正是 Table 2 所要的「社群列表」。早期版本將整個 tuple 當作
+    通用容器遞迴展平，會把 flat_cdic 的 value（節點字串 list）
+    錯誤地拆成 len==1 的 singleton set，造成後續 `len(c)>1` 過濾
+    後全部為空、導致 table2.csv 每一欄皆為 0。
+
+    正確作法：若輸入明顯是 community_sorting 的 4-tuple，直接取
+    第 3 個元素 flat_cdic；否則才退回原本的保守展平邏輯。
+    """
+    # 專用分支：community_sorting 的 4-tuple → 取 flat_cdic
+    if (isinstance(communities, tuple) and len(communities) == 4
+            and isinstance(communities[2], dict)):
+        flat_cdic = communities[2]
+        return [set(str(n) for n in nodes) for nodes in flat_cdic.values()]
+
+    # 通用分支（保留舊邏輯作為 fallback）
     out = []
     if communities is None:
         return out

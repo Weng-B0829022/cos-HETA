@@ -64,7 +64,19 @@ def load_positions(csv_path, G):
 
 
 def flatten_communities(communities):
-    """heta.community_sorting() 回傳結構不一定統一，將其展平為 [set(), set(), ...]"""
+    """heta.community_sorting() 回傳結構不一定統一，將其展平為 [set(), set(), ...]
+
+    community_sorting 的正式回傳是 4-tuple：
+        (nodes_sorted, h_tree_dic, flat_cdic, kmax)
+    其中 flat_cdic = {leader: [member, ...]}。舊版通用展平邏輯會把
+    flat_cdic 的 list 值拆成 singleton，導致社群偵測失效（同 Table 2 bug）。
+    這裡優先走 4-tuple 專用分支。
+    """
+    if (isinstance(communities, tuple) and len(communities) == 4
+            and isinstance(communities[2], dict)):
+        flat_cdic = communities[2]
+        return [set(str(n) for n in nodes) for nodes in flat_cdic.values()]
+
     out = []
     if communities is None:
         return out
