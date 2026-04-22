@@ -12,6 +12,12 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+# 第一層共同鄰居比率 R¹ 的定義從 heta 套件取用：
+#   - auto.py     → heta/__init__.py     → 分母 = min（論文原版）
+#   - cos_auto.py → cos_heta/__init__.py → 分母 = sqrt（幾何平均；cos-HETA）
+# 切換由 cos_auto.py 的 shim (_cos_shim/heta/) 自動完成，本腳本無須感知。
+from heta import first_layer_cn_ratio
+
 # 本腳本位於 HETA/src/exp5_real16_r1_boxplot/
 # 輸入資料：HETA 根目錄下的 data/
 # 輸出：HETA/experiment/experiment_<timestamp>/
@@ -48,14 +54,6 @@ NETWORKS = [
     ("ba_sfn",      "ba_sfn.net"),
     ("s208",        "s208.net"),
 ]
-
-
-def first_layer_cn_ratio(G, u, v):
-    nbr_u = set(G.neighbors(u)) - {v}
-    nbr_v = set(G.neighbors(v)) - {u}
-    if not nbr_u or not nbr_v:
-        return 0.0
-    return len(nbr_u & nbr_v) / min(len(nbr_u), len(nbr_v))
 
 
 def main():

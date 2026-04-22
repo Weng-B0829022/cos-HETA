@@ -25,6 +25,20 @@ GRAPH_KEY_STD_COMMON_NODES = 'std'
 #TODO: check PREDECESSORS = 'pre'
 TIME = 0
 
+# ─────────────────────────────────────────────────────────────────────
+# Module-level globals with safe defaults.
+# These are otherwise only assigned inside bridge_or_bond() /
+# get_external_threshold(), which means on Windows (multiprocess / pathos
+# 採 spawn 模式)，worker 子程序重新 import 本模組時，module namespace 不會
+# 包含這些變數 → randomizing() 裡的 `if output_random:` 直接 NameError。
+# 預先在 module 層級給 default，worker fresh-import 時也能吃到；主程序日後
+# 呼叫 bridge_or_bond() 仍會覆寫為使用者指定的值，不影響既有語義。
+# ─────────────────────────────────────────────────────────────────────
+silent = False
+threads_no = 4
+output_random = False
+random_dir = 'temp'
+
 
 def edge_type_identification(g, kmax, ext_dic, return_all_list=False):
     global silent
