@@ -232,64 +232,8 @@ incompatibility"。審稿人看 abstract 的前三句就在決定你的態度。
 
 ── 第 5 節 Experimental Validation ───────────────────────────
 
-這節是你論文的量化骨幹。建議四層實驗（對應前面討論的四層）：
 
-5.1 實驗設定
-  列出：
-    - 資料集（原論文 16 個 + LFR benchmark，可選加 SNAP 上
-      更大的網路）
-    - 評估指標
-    - 比較基線（HPI 原版 + 幾個 sanity check 指標如 Jaccard
-      與 HDI）
-    - 重複次數與統計檢定方法
 
-5.2 實驗一：分佈正態性恢復
-  對每個網路、每個指標，報告：
-    - 偏度、峰度
-    - Shapiro-Wilk p-value
-    - Mean+2SD 的實際涵蓋率
-
-  預期結果：Salton 的偏度絕對值平均下降 40-60%，Shapiro-Wilk
-  通過率（p>0.05）顯著提高。用盒形圖或熱圖呈現。
-
-5.3 實驗二：度依賴性削弱
-  計算 Pearson(s(u,v), min(d_u,d_v))，在同質/異質網路上分別
-  報告。
-
-  預期結果：HPI 在異質網路上 |ρ| 顯著高於 Salton。這直接對
-  應第 3 節的理論論證。
-
-5.4 實驗三：連結類型分類穩定性
-  這個實驗比較微妙——因為沒有 ground truth 告訴你「這條邊真
-  的是 bond 還是 bridge」。做法是：用 bootstrap 或
-  subsampling，看兩個指標的分類結果在多次抽樣下的一致性
-  （Jaccard index of classification sets）。
-
-  預期結果：Salton 版本的分類更穩定。
-
-5.5 實驗四：社群偵測品質（最關鍵）
-  在有 ground truth 的網路（karate, football, LFR）上跑完整
-  HETA partition，報告 NMI、ARI。
-
-  這個實驗結果就是你的論文能不能中的關鍵：
-    - 若 Salton 版 NMI 顯著優於 HPI 版（p<0.05, Wilcoxon
-      signed-rank）→ 論文故事完整
-    - 若兩者差不多 → 你的貢獻退化為「統計合理性」而非「效能
-      提升」，需要調整 framing
-    - 若 HPI 版反而更好 → 重新評估整個論文，可能需要寫成
-      「HPI 的實用有效性 vs. 統計不合理性之間的 trade-off」
-
-  ★ 先跑這個實驗再決定論文要不要寫 ★
-  這是最重要的建議——不要寫完前面四節才發現實驗打臉。
-
-5.6 消融實驗與 sanity check
-  加入 Jaccard 與 HDI 作為對照組，讓讀者看到「Salton 不是唯
-  一合理的選擇，但在多個合理選項中是 Pareto 最優」。這一步很
-  重要，因為你在 Intro 裡承諾過要處理「為什麼不是其他指標」。
-
-避開陷阱：不要只報平均值，一定要報標準差或信賴區間。不要只
-在一兩個網路上測試後就下結論，要 16 個都測。統計顯著性檢定是
-必須的，不是加分項。
 
 
 ── 第 6 節 Discussion ────────────────────────────────────────
