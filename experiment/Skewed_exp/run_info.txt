@@ -1,0 +1,35 @@
+Experiment 5.1 — R¹ Graph-Mean Distribution Normality (CLT version)
+========================================================================
+timestamp    : 2026-04-23T16:37:03
+num_nulls B  : 200
+Q (swap × m) : 100
+seed         : 20260423
+runtime(min) : 51.75
+data_dir     : C:\Users\翁\Desktop\HETA\data\net
+out_dir      : C:\Users\翁\Desktop\HETA\experiment\Skewed_exp
+
+Sample unit  : per-null graph-mean μ_b = (1/m) · Σ_(u,v) R^1(u,v; G_b)
+Sample size  : B means per network (one scalar per null)
+
+Similarity indices:
+  [min]  HPI        : R^1 = |∩| / min(|N(u)\{v}|, |N(v)\{u}|)   (論文原版)
+  [sqrt] Salton/cos : R^1 = |∩| / sqrt(|N(u)\{v}| · |N(v)\{u}|) (cos-HETA)
+Null model : NetworkX connected_double_edge_swap（保留度序列）
+Stats      : skewness, excess kurtosis, Shapiro-Wilk p, Anderson-Darling A², Mean+2SD coverage
+
+兩版共用同一批 null networks，以確保比較公平（同一 rng seed 序列）。
+
+── Summary 偏態等級次數（|skew|<0.5: near-sym; 0.5~1: moderate; ≥1: high） ─
+group    metric  near-sym  moderate  high   NA
+WS       min           16         0     0    0
+WS       sqrt          16         0     0    0
+NW       min           15         1     0    0
+NW       sqrt          15         1     0    0
+REAL16   min           15         1     0    0
+REAL16   sqrt          16         0     0    0
+
+── 平均偏度對照（越接近 0 越接近常態） ────────────────
+group      mean(skew)_min   mean(skew)_sqrt   mean|skew|_min   mean|skew|_sqrt
+WS                  0.109             0.120            0.166             0.171
+NW                  0.131             0.136            0.186             0.186
+REAL16              0.083             0.093            0.196             0.185
