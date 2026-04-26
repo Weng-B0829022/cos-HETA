@@ -1,0 +1,838 @@
+HETA 分析結果
+================================================================================
+節點數     : 200
+邊數       : 600
+kmax       : 1
+n_random   : 1000
+執行時間   : 0.100 秒
+原始 indexing : 1-indexed
+節點座標   : 無（全 0）
+================================================================================
+
+分類統計
+--------------------------------------------------------------------------------
+  silk link      :    0 條  (  0.0%)
+  bond link      :   61 條  ( 10.2%)
+  local bridge   :   20 條  (  3.3%)
+  global bridge  :  519 條  ( 86.5%)
+--------------------------------------------------------------------------------
+
+R^1 (第一層共同鄰居比) 統計
+--------------------------------------------------------------------------------
+  min    : 0.000000
+  max    : 0.500000
+  mean   : 0.033114
+  median : 0.000000
+--------------------------------------------------------------------------------
+
+節點座標 (Vertices)
+--------------------------------------------------------------------------------
+  id      x             y           
+  ------  ------------  ------------
+  0           0.000000      0.000000
+  1           0.000000      0.000000
+  2           0.000000      0.000000
+  3           0.000000      0.000000
+  4           0.000000      0.000000
+  5           0.000000      0.000000
+  6           0.000000      0.000000
+  7           0.000000      0.000000
+  8           0.000000      0.000000
+  9           0.000000      0.000000
+  10          0.000000      0.000000
+  11          0.000000      0.000000
+  12          0.000000      0.000000
+  13          0.000000      0.000000
+  14          0.000000      0.000000
+  15          0.000000      0.000000
+  16          0.000000      0.000000
+  17          0.000000      0.000000
+  18          0.000000      0.000000
+  19          0.000000      0.000000
+  20          0.000000      0.000000
+  21          0.000000      0.000000
+  22          0.000000      0.000000
+  23          0.000000      0.000000
+  24          0.000000      0.000000
+  25          0.000000      0.000000
+  26          0.000000      0.000000
+  27          0.000000      0.000000
+  28          0.000000      0.000000
+  29          0.000000      0.000000
+  30          0.000000      0.000000
+  31          0.000000      0.000000
+  32          0.000000      0.000000
+  33          0.000000      0.000000
+  34          0.000000      0.000000
+  35          0.000000      0.000000
+  36          0.000000      0.000000
+  37          0.000000      0.000000
+  38          0.000000      0.000000
+  39          0.000000      0.000000
+  40          0.000000      0.000000
+  41          0.000000      0.000000
+  42          0.000000      0.000000
+  43          0.000000      0.000000
+  44          0.000000      0.000000
+  45          0.000000      0.000000
+  46          0.000000      0.000000
+  47          0.000000      0.000000
+  48          0.000000      0.000000
+  49          0.000000      0.000000
+  50          0.000000      0.000000
+  51          0.000000      0.000000
+  52          0.000000      0.000000
+  53          0.000000      0.000000
+  54          0.000000      0.000000
+  55          0.000000      0.000000
+  56          0.000000      0.000000
+  57          0.000000      0.000000
+  58          0.000000      0.000000
+  59          0.000000      0.000000
+  60          0.000000      0.000000
+  61          0.000000      0.000000
+  62          0.000000      0.000000
+  63          0.000000      0.000000
+  64          0.000000      0.000000
+  65          0.000000      0.000000
+  66          0.000000      0.000000
+  67          0.000000      0.000000
+  68          0.000000      0.000000
+  69          0.000000      0.000000
+  70          0.000000      0.000000
+  71          0.000000      0.000000
+  72          0.000000      0.000000
+  73          0.000000      0.000000
+  74          0.000000      0.000000
+  75          0.000000      0.000000
+  76          0.000000      0.000000
+  77          0.000000      0.000000
+  78          0.000000      0.000000
+  79          0.000000      0.000000
+  80          0.000000      0.000000
+  81          0.000000      0.000000
+  82          0.000000      0.000000
+  83          0.000000      0.000000
+  84          0.000000      0.000000
+  85          0.000000      0.000000
+  86          0.000000      0.000000
+  87          0.000000      0.000000
+  88          0.000000      0.000000
+  89          0.000000      0.000000
+  90          0.000000      0.000000
+  91          0.000000      0.000000
+  92          0.000000      0.000000
+  93          0.000000      0.000000
+  94          0.000000      0.000000
+  95          0.000000      0.000000
+  96          0.000000      0.000000
+  97          0.000000      0.000000
+  98          0.000000      0.000000
+  99          0.000000      0.000000
+  100         0.000000      0.000000
+  101         0.000000      0.000000
+  102         0.000000      0.000000
+  103         0.000000      0.000000
+  104         0.000000      0.000000
+  105         0.000000      0.000000
+  106         0.000000      0.000000
+  107         0.000000      0.000000
+  108         0.000000      0.000000
+  109         0.000000      0.000000
+  110         0.000000      0.000000
+  111         0.000000      0.000000
+  112         0.000000      0.000000
+  113         0.000000      0.000000
+  114         0.000000      0.000000
+  115         0.000000      0.000000
+  116         0.000000      0.000000
+  117         0.000000      0.000000
+  118         0.000000      0.000000
+  119         0.000000      0.000000
+  120         0.000000      0.000000
+  121         0.000000      0.000000
+  122         0.000000      0.000000
+  123         0.000000      0.000000
+  124         0.000000      0.000000
+  125         0.000000      0.000000
+  126         0.000000      0.000000
+  127         0.000000      0.000000
+  128         0.000000      0.000000
+  129         0.000000      0.000000
+  130         0.000000      0.000000
+  131         0.000000      0.000000
+  132         0.000000      0.000000
+  133         0.000000      0.000000
+  134         0.000000      0.000000
+  135         0.000000      0.000000
+  136         0.000000      0.000000
+  137         0.000000      0.000000
+  138         0.000000      0.000000
+  139         0.000000      0.000000
+  140         0.000000      0.000000
+  141         0.000000      0.000000
+  142         0.000000      0.000000
+  143         0.000000      0.000000
+  144         0.000000      0.000000
+  145         0.000000      0.000000
+  146         0.000000      0.000000
+  147         0.000000      0.000000
+  148         0.000000      0.000000
+  149         0.000000      0.000000
+  150         0.000000      0.000000
+  151         0.000000      0.000000
+  152         0.000000      0.000000
+  153         0.000000      0.000000
+  154         0.000000      0.000000
+  155         0.000000      0.000000
+  156         0.000000      0.000000
+  157         0.000000      0.000000
+  158         0.000000      0.000000
+  159         0.000000      0.000000
+  160         0.000000      0.000000
+  161         0.000000      0.000000
+  162         0.000000      0.000000
+  163         0.000000      0.000000
+  164         0.000000      0.000000
+  165         0.000000      0.000000
+  166         0.000000      0.000000
+  167         0.000000      0.000000
+  168         0.000000      0.000000
+  169         0.000000      0.000000
+  170         0.000000      0.000000
+  171         0.000000      0.000000
+  172         0.000000      0.000000
+  173         0.000000      0.000000
+  174         0.000000      0.000000
+  175         0.000000      0.000000
+  176         0.000000      0.000000
+  177         0.000000      0.000000
+  178         0.000000      0.000000
+  179         0.000000      0.000000
+  180         0.000000      0.000000
+  181         0.000000      0.000000
+  182         0.000000      0.000000
+  183         0.000000      0.000000
+  184         0.000000      0.000000
+  185         0.000000      0.000000
+  186         0.000000      0.000000
+  187         0.000000      0.000000
+  188         0.000000      0.000000
+  189         0.000000      0.000000
+  190         0.000000      0.000000
+  191         0.000000      0.000000
+  192         0.000000      0.000000
+  193         0.000000      0.000000
+  194         0.000000      0.000000
+  195         0.000000      0.000000
+  196         0.000000      0.000000
+  197         0.000000      0.000000
+  198         0.000000      0.000000
+  199         0.000000      0.000000
+--------------------------------------------------------------------------------
+
+逐邊分類結果 (含 R^1)
+--------------------------------------------------------------------------------
+  u       v       type                    layer  R^1       
+  ------  ------  ----------------------  -----  ----------
+  0       3       global_bridge           0      0.000000
+  0       100     bond                    0      0.200000
+  0       197     global_bridge           0      0.000000
+  0       73      bond                    0      0.200000
+  0       46      global_bridge           0      0.000000
+  0       28      global_bridge           0      0.000000
+  1       25      bond                    0      0.333333
+  1       42      global_bridge           0      0.000000
+  1       4       bond                    0      0.333333
+  1       189     global_bridge           0      0.000000
+  2       3       global_bridge           0      0.000000
+  2       132     global_bridge           0      0.000000
+  2       6       bond                    0      0.200000
+  2       72      global_bridge           0      0.000000
+  2       120     bond                    0      0.200000
+  2       121     global_bridge           0      0.000000
+  3       199     global_bridge           0      0.000000
+  3       74      global_bridge           0      0.000000
+  3       14      global_bridge           0      0.000000
+  3       60      global_bridge           0      0.000000
+  3       126     global_bridge           0      0.000000
+  4       65      global_bridge           0      0.000000
+  4       110     global_bridge           0      0.000000
+  4       116     bond                    0      0.200000
+  4       25      bond                    0      0.400000
+  4       27      bond                    0      0.400000
+  5       55      global_bridge           0      0.000000
+  5       126     global_bridge           0      0.000000
+  5       6       global_bridge           0      0.000000
+  5       7       global_bridge           0      0.000000
+  6       112     global_bridge           0      0.000000
+  6       184     global_bridge           0      0.000000
+  6       119     global_bridge           0      0.000000
+  6       120     bond                    0      0.200000
+  6       59      global_bridge           0      0.000000
+  6       191     global_bridge           0      0.000000
+  7       65      global_bridge           0      0.000000
+  7       99      global_bridge           0      0.000000
+  7       17      global_bridge           0      0.000000
+  7       10      global_bridge           0      0.000000
+  7       157     global_bridge           0      0.000000
+  7       145     global_bridge           0      0.000000
+  7       74      global_bridge           0      0.000000
+  8       9       global_bridge           0      0.000000
+  8       146     global_bridge           0      0.000000
+  8       91      global_bridge           0      0.000000
+  8       70      global_bridge           0      0.000000
+  8       119     global_bridge           0      0.000000
+  9       65      global_bridge           0      0.000000
+  9       10      global_bridge           0      0.000000
+  9       11      bond                    0      0.200000
+  9       12      bond                    0      0.200000
+  9       178     global_bridge           0      0.000000
+  10      98      global_bridge           0      0.000000
+  10      173     global_bridge           0      0.000000
+  10      150     global_bridge           0      0.000000
+  10      73      global_bridge           0      0.000000
+  11      192     global_bridge           0      0.000000
+  11      198     global_bridge           0      0.000000
+  11      12      local_bridge_k1         1      0.166667
+  11      80      bond                    0      0.250000
+  11      146     local_bridge_k1         1      0.166667
+  11      183     global_bridge           0      0.000000
+  12      163     bond                    0      0.250000
+  12      13      global_bridge           0      0.000000
+  12      174     bond                    0      0.333333
+  12      143     global_bridge           0      0.000000
+  12      180     global_bridge           0      0.000000
+  12      41      global_bridge           0      0.000000
+  13      103     global_bridge           0      0.000000
+  13      104     global_bridge           0      0.000000
+  13      44      global_bridge           0      0.000000
+  13      117     global_bridge           0      0.000000
+  13      91      global_bridge           0      0.000000
+  13      149     global_bridge           0      0.000000
+  14      66      global_bridge           0      0.000000
+  14      17      global_bridge           0      0.000000
+  14      171     global_bridge           0      0.000000
+  14      113     global_bridge           0      0.000000
+  14      57      global_bridge           0      0.000000
+  15      195     global_bridge           0      0.000000
+  15      110     global_bridge           0      0.000000
+  15      16      global_bridge           0      0.000000
+  15      18      global_bridge           0      0.000000
+  15      19      global_bridge           0      0.000000
+  15      122     global_bridge           0      0.000000
+  15      188     global_bridge           0      0.000000
+  16      193     global_bridge           0      0.000000
+  16      162     global_bridge           0      0.000000
+  16      131     global_bridge           0      0.000000
+  16      106     global_bridge           0      0.000000
+  16      152     global_bridge           0      0.000000
+  16      121     global_bridge           0      0.000000
+  17      165     global_bridge           0      0.000000
+  17      42      global_bridge           0      0.000000
+  17      18      global_bridge           0      0.000000
+  17      20      global_bridge           0      0.000000
+  17      174     global_bridge           0      0.000000
+  18      97      bond                    0      0.333333
+  18      131     global_bridge           0      0.000000
+  18      100     local_bridge_k1         1      0.142857
+  18      38      global_bridge           0      0.000000
+  18      81      global_bridge           0      0.000000
+  18      25      global_bridge           0      0.000000
+  19      192     global_bridge           0      0.000000
+  19      114     global_bridge           0      0.000000
+  19      23      global_bridge           0      0.000000
+  20      105     global_bridge           0      0.000000
+  20      143     global_bridge           0      0.000000
+  20      23      global_bridge           0      0.000000
+  20      175     global_bridge           0      0.000000
+  20      188     global_bridge           0      0.000000
+  21      56      global_bridge           0      0.000000
+  21      81      global_bridge           0      0.000000
+  21      187     global_bridge           0      0.000000
+  22      168     global_bridge           0      0.000000
+  22      169     global_bridge           0      0.000000
+  22      58      global_bridge           0      0.000000
+  22      31      global_bridge           0      0.000000
+  22      125     global_bridge           0      0.000000
+  22      159     global_bridge           0      0.000000
+  23      130     global_bridge           0      0.000000
+  23      43      global_bridge           0      0.000000
+  23      144     global_bridge           0      0.000000
+  23      24      global_bridge           0      0.000000
+  23      153     global_bridge           0      0.000000
+  24      96      global_bridge           0      0.000000
+  24      40      global_bridge           0      0.000000
+  24      117     global_bridge           0      0.000000
+  24      182     global_bridge           0      0.000000
+  24      57      global_bridge           0      0.000000
+  24      27      global_bridge           0      0.000000
+  25      27      local_bridge_k1         1      0.142857
+  25      69      global_bridge           0      0.000000
+  25      178     global_bridge           0      0.000000
+  25      149     local_bridge_k1         1      0.142857
+  25      59      local_bridge_k1         1      0.166667
+  26      63      global_bridge           0      0.000000
+  26      187     global_bridge           0      0.000000
+  26      76      global_bridge           0      0.000000
+  26      77      global_bridge           0      0.000000
+  26      29      global_bridge           0      0.000000
+  27      128     global_bridge           0      0.000000
+  27      43      global_bridge           0      0.000000
+  27      47      global_bridge           0      0.000000
+  27      48      global_bridge           0      0.000000
+  27      146     global_bridge           0      0.000000
+  27      116     local_bridge_k1         1      0.125000
+  27      150     global_bridge           0      0.000000
+  28      66      global_bridge           0      0.000000
+  28      132     global_bridge           0      0.000000
+  28      105     global_bridge           0      0.000000
+  28      146     global_bridge           0      0.000000
+  28      31      global_bridge           0      0.000000
+  29      36      global_bridge           0      0.000000
+  29      170     global_bridge           0      0.000000
+  29      189     global_bridge           0      0.000000
+  30      32      bond                    0      0.333333
+  30      140     global_bridge           0      0.000000
+  30      53      global_bridge           0      0.000000
+  30      31      bond                    0      0.333333
+  31      32      bond                    0      0.200000
+  31      33      global_bridge           0      0.000000
+  31      130     global_bridge           0      0.000000
+  32      34      global_bridge           0      0.000000
+  32      137     bond                    0      0.333333
+  32      42      global_bridge           0      0.000000
+  32      144     global_bridge           0      0.000000
+  32      85      global_bridge           0      0.000000
+  32      62      local_bridge_k1         1      0.142857
+  33      193     global_bridge           0      0.000000
+  33      34      global_bridge           0      0.000000
+  33      39      global_bridge           0      0.000000
+  33      77      global_bridge           0      0.000000
+  33      120     global_bridge           0      0.000000
+  33      90      global_bridge           0      0.000000
+  34      172     global_bridge           0      0.000000
+  34      117     global_bridge           0      0.000000
+  34      52      global_bridge           0      0.000000
+  35      118     global_bridge           0      0.000000
+  35      115     global_bridge           0      0.000000
+  35      78      bond                    0      0.333333
+  35      38      bond                    0      0.333333
+  36      98      global_bridge           0      0.000000
+  36      164     global_bridge           0      0.000000
+  36      37      global_bridge           0      0.000000
+  36      72      global_bridge           0      0.000000
+  36      46      global_bridge           0      0.000000
+  36      112     global_bridge           0      0.000000
+  36      115     global_bridge           0      0.000000
+  36      60      global_bridge           0      0.000000
+  37      88      global_bridge           0      0.000000
+  37      172     global_bridge           0      0.000000
+  37      67      global_bridge           0      0.000000
+  37      38      global_bridge           0      0.000000
+  38      167     bond                    0      0.250000
+  38      107     local_bridge_k1         1      0.166667
+  38      173     bond                    0      0.250000
+  38      78      local_bridge_k1         1      0.166667
+  38      152     local_bridge_k1         1      0.111111
+  38      56      global_bridge           0      0.000000
+  38      159     global_bridge           0      0.000000
+  39      43      global_bridge           0      0.000000
+  39      40      local_bridge_k1         1      0.166667
+  39      107     global_bridge           0      0.000000
+  39      111     global_bridge           0      0.000000
+  39      57      global_bridge           0      0.000000
+  39      185     bond                    0      0.200000
+  40      44      global_bridge           0      0.000000
+  40      147     global_bridge           0      0.000000
+  40      185     bond                    0      0.200000
+  40      90      global_bridge           0      0.000000
+  40      63      global_bridge           0      0.000000
+  41      43      global_bridge           0      0.000000
+  41      117     global_bridge           0      0.000000
+  41      126     global_bridge           0      0.000000
+  41      183     global_bridge           0      0.000000
+  42      166     global_bridge           0      0.000000
+  42      135     global_bridge           0      0.000000
+  42      167     global_bridge           0      0.000000
+  42      48      global_bridge           0      0.000000
+  42      181     global_bridge           0      0.000000
+  43      198     global_bridge           0      0.000000
+  43      106     global_bridge           0      0.000000
+  43      44      global_bridge           0      0.000000
+  43      140     global_bridge           0      0.000000
+  44      161     global_bridge           0      0.000000
+  44      121     global_bridge           0      0.000000
+  44      58      global_bridge           0      0.000000
+  45      48      global_bridge           0      0.000000
+  45      170     global_bridge           0      0.000000
+  45      59      global_bridge           0      0.000000
+  45      151     global_bridge           0      0.000000
+  46      128     global_bridge           0      0.000000
+  46      136     global_bridge           0      0.000000
+  46      106     global_bridge           0      0.000000
+  46      47      global_bridge           0      0.000000
+  46      49      global_bridge           0      0.000000
+  47      137     global_bridge           0      0.000000
+  47      81      global_bridge           0      0.000000
+  47      85      global_bridge           0      0.000000
+  47      118     global_bridge           0      0.000000
+  48      192     global_bridge           0      0.000000
+  48      65      global_bridge           0      0.000000
+  48      49      global_bridge           0      0.000000
+  49      82      global_bridge           0      0.000000
+  49      51      global_bridge           0      0.000000
+  49      152     global_bridge           0      0.000000
+  49      189     global_bridge           0      0.000000
+  50      96      global_bridge           0      0.000000
+  50      149     bond                    0      0.250000
+  50      53      global_bridge           0      0.000000
+  50      118     global_bridge           0      0.000000
+  50      158     bond                    0      0.250000
+  51      176     global_bridge           0      0.000000
+  51      114     global_bridge           0      0.000000
+  51      53      global_bridge           0      0.000000
+  51      119     global_bridge           0      0.000000
+  51      90      global_bridge           0      0.000000
+  52      192     global_bridge           0      0.000000
+  52      69      global_bridge           0      0.000000
+  52      141     global_bridge           0      0.000000
+  52      85      global_bridge           0      0.000000
+  52      190     global_bridge           0      0.000000
+  53      160     global_bridge           0      0.000000
+  53      130     global_bridge           0      0.000000
+  53      144     global_bridge           0      0.000000
+  53      54      global_bridge           0      0.000000
+  53      185     global_bridge           0      0.000000
+  54      64      local_bridge_k1         1      0.166667
+  54      134     global_bridge           0      0.000000
+  54      172     global_bridge           0      0.000000
+  54      116     global_bridge           0      0.000000
+  54      55      global_bridge           0      0.000000
+  54      184     local_bridge_k1         1      0.166667
+  55      163     global_bridge           0      0.000000
+  55      70      global_bridge           0      0.000000
+  55      108     global_bridge           0      0.000000
+  55      142     global_bridge           0      0.000000
+  55      186     bond                    0      0.333333
+  55      155     global_bridge           0      0.000000
+  55      93      bond                    0      0.333333
+  55      62      global_bridge           0      0.000000
+  56      182     global_bridge           0      0.000000
+  56      63      global_bridge           0      0.000000
+  57      165     global_bridge           0      0.000000
+  57      87      global_bridge           0      0.000000
+  57      60      global_bridge           0      0.000000
+  58      59      global_bridge           0      0.000000
+  58      182     global_bridge           0      0.000000
+  58      123     global_bridge           0      0.000000
+  58      60      global_bridge           0      0.000000
+  59      76      global_bridge           0      0.000000
+  59      177     global_bridge           0      0.000000
+  59      149     local_bridge_k1         1      0.166667
+  60      128     global_bridge           0      0.000000
+  60      61      global_bridge           0      0.000000
+  60      179     global_bridge           0      0.000000
+  60      157     global_bridge           0      0.000000
+  61      65      global_bridge           0      0.000000
+  61      162     global_bridge           0      0.000000
+  61      195     global_bridge           0      0.000000
+  61      153     global_bridge           0      0.000000
+  62      100     global_bridge           0      0.000000
+  62      199     global_bridge           0      0.000000
+  62      137     bond                    0      0.333333
+  62      121     global_bridge           0      0.000000
+  62      91      global_bridge           0      0.000000
+  62      156     global_bridge           0      0.000000
+  63      180     global_bridge           0      0.000000
+  63      134     global_bridge           0      0.000000
+  64      69      global_bridge           0      0.000000
+  64      198     global_bridge           0      0.000000
+  64      106     global_bridge           0      0.000000
+  64      175     global_bridge           0      0.000000
+  64      184     local_bridge_k1         1      0.166667
+  64      127     global_bridge           0      0.000000
+  65      182     global_bridge           0      0.000000
+  66      108     global_bridge           0      0.000000
+  66      67      global_bridge           0      0.000000
+  67      99      global_bridge           0      0.000000
+  67      199     global_bridge           0      0.000000
+  67      106     global_bridge           0      0.000000
+  67      116     global_bridge           0      0.000000
+  67      85      global_bridge           0      0.000000
+  67      180     global_bridge           0      0.000000
+  67      69      global_bridge           0      0.000000
+  68      153     bond                    0      0.500000
+  68      123     global_bridge           0      0.000000
+  68      150     bond                    0      0.500000
+  69      100     global_bridge           0      0.000000
+  69      76      global_bridge           0      0.000000
+  69      118     global_bridge           0      0.000000
+  70      131     global_bridge           0      0.000000
+  70      135     bond                    0      0.250000
+  70      73      global_bridge           0      0.000000
+  70      138     bond                    0      0.333333
+  70      144     global_bridge           0      0.000000
+  70      136     bond                    0      0.200000
+  70      179     global_bridge           0      0.000000
+  70      94      global_bridge           0      0.000000
+  71      73      global_bridge           0      0.000000
+  71      132     global_bridge           0      0.000000
+  71      109     global_bridge           0      0.000000
+  71      174     global_bridge           0      0.000000
+  72      192     global_bridge           0      0.000000
+  72      74      global_bridge           0      0.000000
+  72      144     global_bridge           0      0.000000
+  72      127     global_bridge           0      0.000000
+  73      100     local_bridge_k1         1      0.125000
+  73      75      global_bridge           0      0.000000
+  73      116     global_bridge           0      0.000000
+  73      157     bond                    0      0.200000
+  73      159     bond                    0      0.200000
+  74      129     global_bridge           0      0.000000
+  74      91      global_bridge           0      0.000000
+  74      156     global_bridge           0      0.000000
+  75      155     global_bridge           0      0.000000
+  75      84      global_bridge           0      0.000000
+  75      117     global_bridge           0      0.000000
+  75      89      global_bridge           0      0.000000
+  76      192     global_bridge           0      0.000000
+  76      151     global_bridge           0      0.000000
+  77      122     global_bridge           0      0.000000
+  77      171     global_bridge           0      0.000000
+  77      179     global_bridge           0      0.000000
+  78      103     global_bridge           0      0.000000
+  78      110     global_bridge           0      0.000000
+  78      79      global_bridge           0      0.000000
+  78      83      global_bridge           0      0.000000
+  78      148     global_bridge           0      0.000000
+  79      192     global_bridge           0      0.000000
+  79      168     bond                    0      0.250000
+  79      171     global_bridge           0      0.000000
+  79      165     bond                    0      0.250000
+  80      122     global_bridge           0      0.000000
+  80      146     bond                    0      0.250000
+  80      117     global_bridge           0      0.000000
+  80      134     global_bridge           0      0.000000
+  81      110     global_bridge           0      0.000000
+  82      162     global_bridge           0      0.000000
+  82      138     global_bridge           0      0.000000
+  82      109     global_bridge           0      0.000000
+  82      118     global_bridge           0      0.000000
+  82      188     global_bridge           0      0.000000
+  83      84      global_bridge           0      0.000000
+  83      149     global_bridge           0      0.000000
+  84      173     global_bridge           0      0.000000
+  84      142     global_bridge           0      0.000000
+  84      85      global_bridge           0      0.000000
+  84      87      global_bridge           0      0.000000
+  85      129     global_bridge           0      0.000000
+  85      168     global_bridge           0      0.000000
+  85      86      global_bridge           0      0.000000
+  86      196     global_bridge           0      0.000000
+  86      175     global_bridge           0      0.000000
+  86      88      global_bridge           0      0.000000
+  86      183     global_bridge           0      0.000000
+  86      152     global_bridge           0      0.000000
+  86      100     global_bridge           0      0.000000
+  87      88      bond                    0      0.250000
+  87      90      bond                    0      0.250000
+  87      193     global_bridge           0      0.000000
+  88      136     global_bridge           0      0.000000
+  88      111     global_bridge           0      0.000000
+  88      185     global_bridge           0      0.000000
+  88      90      local_bridge_k1         1      0.166667
+  89      127     global_bridge           0      0.000000
+  89      194     global_bridge           0      0.000000
+  89      102     global_bridge           0      0.000000
+  89      119     global_bridge           0      0.000000
+  90      143     global_bridge           0      0.000000
+  90      184     global_bridge           0      0.000000
+  91      194     global_bridge           0      0.000000
+  91      145     global_bridge           0      0.000000
+  91      176     global_bridge           0      0.000000
+  91      177     global_bridge           0      0.000000
+  91      186     global_bridge           0      0.000000
+  92      184     global_bridge           0      0.000000
+  92      115     global_bridge           0      0.000000
+  92      126     global_bridge           0      0.000000
+  93      186     bond                    0      0.333333
+  93      119     global_bridge           0      0.000000
+  93      189     global_bridge           0      0.000000
+  94      96      global_bridge           0      0.000000
+  94      184     global_bridge           0      0.000000
+  94      190     global_bridge           0      0.000000
+  94      103     global_bridge           0      0.000000
+  95      128     global_bridge           0      0.000000
+  95      127     global_bridge           0      0.000000
+  95      140     global_bridge           0      0.000000
+  95      142     global_bridge           0      0.000000
+  95      119     global_bridge           0      0.000000
+  96      114     global_bridge           0      0.000000
+  96      178     global_bridge           0      0.000000
+  97      164     global_bridge           0      0.000000
+  97      100     bond                    0      0.333333
+  97      111     global_bridge           0      0.000000
+  98      184     global_bridge           0      0.000000
+  98      99      global_bridge           0      0.000000
+  98      101     global_bridge           0      0.000000
+  99      102     global_bridge           0      0.000000
+  99      108     global_bridge           0      0.000000
+  99      119     global_bridge           0      0.000000
+  100     170     global_bridge           0      0.000000
+  100     147     global_bridge           0      0.000000
+  101     176     global_bridge           0      0.000000
+  101     115     bond                    0      0.250000
+  101     188     bond                    0      0.250000
+  101     103     global_bridge           0      0.000000
+  102     161     global_bridge           0      0.000000
+  102     103     global_bridge           0      0.000000
+  102     104     global_bridge           0      0.000000
+  102     105     global_bridge           0      0.000000
+  102     163     global_bridge           0      0.000000
+  103     139     global_bridge           0      0.000000
+  103     159     global_bridge           0      0.000000
+  104     167     global_bridge           0      0.000000
+  104     106     global_bridge           0      0.000000
+  104     114     global_bridge           0      0.000000
+  104     179     global_bridge           0      0.000000
+  105     156     global_bridge           0      0.000000
+  105     107     global_bridge           0      0.000000
+  105     191     global_bridge           0      0.000000
+  106     107     global_bridge           0      0.000000
+  107     163     global_bridge           0      0.000000
+  107     132     global_bridge           0      0.000000
+  107     173     bond                    0      0.250000
+  108     136     global_bridge           0      0.000000
+  108     191     global_bridge           0      0.000000
+  109     111     global_bridge           0      0.000000
+  109     110     global_bridge           0      0.000000
+  110     192     global_bridge           0      0.000000
+  111     165     global_bridge           0      0.000000
+  111     129     global_bridge           0      0.000000
+  112     140     global_bridge           0      0.000000
+  112     133     global_bridge           0      0.000000
+  112     113     global_bridge           0      0.000000
+  113     124     global_bridge           0      0.000000
+  113     178     global_bridge           0      0.000000
+  113     116     global_bridge           0      0.000000
+  114     198     global_bridge           0      0.000000
+  114     116     global_bridge           0      0.000000
+  115     166     global_bridge           0      0.000000
+  115     188     local_bridge_k1         1      0.142857
+  115     116     global_bridge           0      0.000000
+  115     117     global_bridge           0      0.000000
+  115     120     global_bridge           0      0.000000
+  116     141     global_bridge           0      0.000000
+  117     175     global_bridge           0      0.000000
+  117     169     global_bridge           0      0.000000
+  118     191     global_bridge           0      0.000000
+  120     192     global_bridge           0      0.000000
+  120     156     global_bridge           0      0.000000
+  121     180     global_bridge           0      0.000000
+  121     122     global_bridge           0      0.000000
+  122     132     global_bridge           0      0.000000
+  122     153     global_bridge           0      0.000000
+  123     171     global_bridge           0      0.000000
+  123     173     global_bridge           0      0.000000
+  123     146     global_bridge           0      0.000000
+  123     124     global_bridge           0      0.000000
+  124     141     global_bridge           0      0.000000
+  124     127     global_bridge           0      0.000000
+  125     144     global_bridge           0      0.000000
+  125     178     global_bridge           0      0.000000
+  126     144     global_bridge           0      0.000000
+  126     152     global_bridge           0      0.000000
+  127     134     global_bridge           0      0.000000
+  128     131     global_bridge           0      0.000000
+  129     132     global_bridge           0      0.000000
+  130     138     global_bridge           0      0.000000
+  130     188     global_bridge           0      0.000000
+  131     161     global_bridge           0      0.000000
+  131     164     global_bridge           0      0.000000
+  132     168     global_bridge           0      0.000000
+  132     170     global_bridge           0      0.000000
+  132     162     global_bridge           0      0.000000
+  132     183     global_bridge           0      0.000000
+  133     152     global_bridge           0      0.000000
+  133     153     global_bridge           0      0.000000
+  133     135     global_bridge           0      0.000000
+  134     169     global_bridge           0      0.000000
+  134     182     global_bridge           0      0.000000
+  134     158     global_bridge           0      0.000000
+  135     195     global_bridge           0      0.000000
+  135     138     bond                    0      0.250000
+  136     138     bond                    0      0.200000
+  136     139     global_bridge           0      0.000000
+  137     138     global_bridge           0      0.000000
+  138     140     global_bridge           0      0.000000
+  139     140     global_bridge           0      0.000000
+  139     142     global_bridge           0      0.000000
+  141     144     global_bridge           0      0.000000
+  141     166     global_bridge           0      0.000000
+  143     192     global_bridge           0      0.000000
+  143     168     global_bridge           0      0.000000
+  144     169     global_bridge           0      0.000000
+  145     153     global_bridge           0      0.000000
+  145     148     global_bridge           0      0.000000
+  146     176     global_bridge           0      0.000000
+  146     147     bond                    0      0.333333
+  146     148     local_bridge_k1         1      0.142857
+  147     148     bond                    0      0.333333
+  148     161     global_bridge           0      0.000000
+  148     179     global_bridge           0      0.000000
+  148     150     global_bridge           0      0.000000
+  148     185     global_bridge           0      0.000000
+  149     161     global_bridge           0      0.000000
+  149     182     global_bridge           0      0.000000
+  149     158     bond                    0      0.250000
+  150     152     global_bridge           0      0.000000
+  150     153     bond                    0      0.200000
+  151     152     global_bridge           0      0.000000
+  152     167     bond                    0      0.250000
+  152     155     global_bridge           0      0.000000
+  153     179     global_bridge           0      0.000000
+  154     185     global_bridge           0      0.000000
+  154     170     global_bridge           0      0.000000
+  154     155     global_bridge           0      0.000000
+  155     157     global_bridge           0      0.000000
+  155     158     global_bridge           0      0.000000
+  156     189     global_bridge           0      0.000000
+  157     166     global_bridge           0      0.000000
+  157     159     bond                    0      0.200000
+  158     191     global_bridge           0      0.000000
+  159     160     global_bridge           0      0.000000
+  160     181     global_bridge           0      0.000000
+  160     197     global_bridge           0      0.000000
+  160     166     global_bridge           0      0.000000
+  162     165     global_bridge           0      0.000000
+  163     174     bond                    0      0.333333
+  164     165     global_bridge           0      0.000000
+  165     168     bond                    0      0.200000
+  166     178     global_bridge           0      0.000000
+  166     182     global_bridge           0      0.000000
+  167     190     global_bridge           0      0.000000
+  170     172     global_bridge           0      0.000000
+  175     182     global_bridge           0      0.000000
+  177     180     global_bridge           0      0.000000
+  179     182     global_bridge           0      0.000000
+  179     189     global_bridge           0      0.000000
+  179     190     global_bridge           0      0.000000
+  180     194     global_bridge           0      0.000000
+  181     184     global_bridge           0      0.000000
+  182     199     global_bridge           0      0.000000
+  184     193     global_bridge           0      0.000000
+  184     199     global_bridge           0      0.000000
+  186     187     global_bridge           0      0.000000
+  187     189     global_bridge           0      0.000000
+  187     188     global_bridge           0      0.000000
+  188     190     global_bridge           0      0.000000
+  190     193     global_bridge           0      0.000000
+  193     194     global_bridge           0      0.000000
+  193     195     global_bridge           0      0.000000
+  194     196     global_bridge           0      0.000000
+  196     197     bond                    0      0.333333
+  196     199     bond                    0      0.333333
+  197     198     global_bridge           0      0.000000
+  197     199     bond                    0      0.250000
+--------------------------------------------------------------------------------
